@@ -6,11 +6,14 @@ export const sensitive = n => /^(\.env(?:\..*)?|.*\.(?:pem|key|p12|pfx)|credenti
 export function main(meta) { return process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(meta); }
 export function inside(root, target) { const p=path.relative(root,target); return p==='' || (!p.startsWith('..'+path.sep) && p!=='..' && !path.isAbsolute(p)); }
 export function safeFile(root, target) {
+  const lexicalRoot=path.resolve(root), lexicalTarget=path.resolve(target);
+  if (!inside(lexicalRoot,lexicalTarget)) throw new Error('Asset resolves outside supplied root');
   const base=fs.realpathSync(root), resolved=fs.realpathSync(target);
   if (!inside(base,resolved)) throw new Error('Asset resolves outside supplied root');
-  // Reject symlinks even when they point back inside the root.
-  let current=base;
-  for (const part of path.relative(base,path.resolve(target)).split(path.sep).filter(Boolean)) {
+  // A root itself may have a symlinked OS ancestor (for example macOS /var).
+  // Reject links in the supplied asset path without rejecting that ancestor.
+  let current=lexicalRoot;
+  for (const part of path.relative(lexicalRoot,lexicalTarget).split(path.sep).filter(Boolean)) {
     current=path.join(current,part); if(fs.lstatSync(current).isSymbolicLink()) throw new Error('Symlink asset is not inspected');
   }
   if(!fs.statSync(resolved).isFile()) throw new Error('Expected regular file');

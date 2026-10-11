@@ -16,6 +16,7 @@ function write(p,f,s){fs.mkdirSync(path.dirname(path.join(p,f)),{recursive:true}
 function good(t){const p=fixture(t);fs.cpSync(path.join(repo,'examples/react-vite/public'),p,{recursive:true});return p;}
 function cli(script,argv){return spawnSync(process.execPath,[path.join(repo,'scripts',script),...argv],{encoding:'utf8'});}
 test('valid manifest verifies real local PNG headers',t=>{const p=good(t);assert.deepEqual(validateManifest(path.join(p,'manifest.webmanifest'),p).findings,[]);});
+test('symlinked ancestor of supplied root is accepted',t=>{const p=good(t),parent=fixture(t),alias=path.join(parent,'alias');try{fs.symlinkSync(p,alias,'junction');}catch(e){if(e.code==='EPERM')return t.skip('Host denies symlink creation');throw e;}assert.deepEqual(validateManifest(path.join(alias,'manifest.webmanifest'),alias).findings,[]);});
 test('bad JSON is an actionable finding',t=>{const p=fixture(t);write(p,'manifest.json','{');assert.equal(validateManifest(path.join(p,'manifest.json'),p).findings[0].id,'manifest-json');});
 test('non-object manifest is rejected',t=>{const p=fixture(t);write(p,'manifest.json','null');assert.equal(validateManifest(path.join(p,'manifest.json'),p).findings[0].id,'manifest-object');});
 test('PNG dimension mismatch is detected',t=>{const p=good(t);const f=path.join(p,'manifest.webmanifest');const m=JSON.parse(fs.readFileSync(f));m.icons[0].sizes='100x100';write(p,'manifest.webmanifest',JSON.stringify(m));assert.ok(validateManifest(f,p).findings.some(x=>x.id==='icon-dimensions'));});

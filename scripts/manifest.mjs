@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {args,main,output,fail,safeFile,inside} from './lib.mjs';
 export function validateManifest(file,root=path.dirname(file)) {
-  root=fs.realpathSync(root); file=safeFile(root,path.resolve(file));
+  file=safeFile(root,path.resolve(file)); root=fs.realpathSync(root);
   if(fs.statSync(file).size>1024*1024)throw new Error('Manifest exceeds 1 MiB inspection limit');
   const findings=[]; const add=(id,severity,message)=>findings.push({id,severity,path:path.relative(root,file).split(path.sep).join('/'),message});
   let m;

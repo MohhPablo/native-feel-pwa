@@ -1,6 +1,7 @@
 * { box-sizing: border-box; }
 html { color-scheme: light; font-family: system-ui, sans-serif; color: #17202a; background: #faf8f2; }
 body { margin: 0; }
+h1, h2 { overflow-wrap: anywhere; }
 main { max-width: 48rem; min-height: 100svh; margin: auto; padding: max(1.25rem, env(safe-area-inset-top, 0px)) max(1.25rem, env(safe-area-inset-right, 0px)) max(2rem, env(safe-area-inset-bottom, 0px)) max(1.25rem, env(safe-area-inset-left, 0px)); }
 p { line-height: 1.7; overflow-wrap: anywhere; }
 button, input { font: inherit; font-size: max(1rem, 16px); min-height: 44px; }

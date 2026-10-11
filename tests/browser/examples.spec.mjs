@@ -32,7 +32,8 @@ for(const port of [4173,4174]) {
   await page.setViewportSize({width:320,height:640});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.evaluate(()=>document.documentElement.style.fontSize='200%');
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  const geometry=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>({tag:e.tagName,width:e.getBoundingClientRect().width,right:e.getBoundingClientRect().right})).slice(0,10)}));
+  expect(geometry.scroll,JSON.stringify(geometry)).toBeLessThanOrEqual(geometry.viewport);
   await trigger.click();
   expect(await page.getByRole('dialog').evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);
   await page.getByRole('button',{name:'Close',exact:true}).click();

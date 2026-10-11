@@ -1,0 +1,51 @@
+name: quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  tools:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [22, 24]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: native-feel-pwa
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: native-feel-pwa/package-lock.json
+      - run: npm ci --ignore-scripts
+        working-directory: native-feel-pwa
+      - run: npm test
+        working-directory: native-feel-pwa
+      - run: npm run validate
+        working-directory: native-feel-pwa
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: native-feel-pwa
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: native-feel-pwa/package-lock.json
+      - run: npm ci --ignore-scripts
+        working-directory: native-feel-pwa
+      - run: npm run build:examples
+        working-directory: native-feel-pwa
+      - run: npx --no-install playwright install --with-deps chromium webkit
+        working-directory: native-feel-pwa
+      - run: npm run test:browser
+        working-directory: native-feel-pwa
+      - run: node scripts/pwa-audit.mjs examples/react-vite --strict
+        working-directory: native-feel-pwa
+      - run: node scripts/pwa-audit.mjs examples/nextjs --strict
+        working-directory: native-feel-pwa
+      - run: node scripts/budget.mjs examples/react-vite/dist --max-js-gzip 200000
+        working-directory: native-feel-pwa

@@ -1,0 +1,26 @@
+{
+  "name": "native-feel-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate-skill.mjs",
+    "test:browser": "playwright test",
+    "build:examples": "npm run build --workspace examples/react-vite && npm run build --workspace examples/nextjs",
+    "demo:audit": "node tests/audit-demo.mjs"
+  },
+  "workspaces": [
+    "examples/react-vite",
+    "examples/nextjs"
+  ],
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@axe-core/playwright": "4.13.0",
+    "yaml": "2.9.1"
+  }
+}

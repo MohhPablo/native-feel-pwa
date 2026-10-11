@@ -1,0 +1,13 @@
+* { box-sizing: border-box; }
+html { color-scheme: light; font-family: system-ui, sans-serif; color: #17202a; background: #faf8f2; }
+body { margin: 0; }
+main { max-width: 48rem; min-height: 100svh; margin: auto; padding: max(1.25rem, env(safe-area-inset-top, 0px)) max(1.25rem, env(safe-area-inset-right, 0px)) max(2rem, env(safe-area-inset-bottom, 0px)) max(1.25rem, env(safe-area-inset-left, 0px)); }
+p { line-height: 1.7; overflow-wrap: anywhere; }
+button, input { font: inherit; font-size: max(1rem, 16px); min-height: 44px; }
+button { border: 2px solid #183d36; border-radius: .5rem; padding: .65rem 1rem; color: white; background: #183d36; touch-action: manipulation; transition: opacity 120ms ease; }
+button:active { opacity: .75; }
+:focus-visible { outline: 3px solid #a04400; outline-offset: 4px; }
+input { display: block; width: 100%; margin: .5rem 0 1.25rem; border: 1px solid #56616b; border-radius: .25rem; padding: .5rem; background: white; color: #17202a; }
+dialog { width: min(32rem, calc(100% - 2rem)); max-height: 80svh; overflow: auto; border: 1px solid #56616b; border-radius: .75rem; padding: 1.5rem; color: #17202a; background: #fff; }
+dialog::backdrop { background: rgb(0 0 0 / .4); }
+@media (prefers-reduced-motion: reduce) { button { transition: none; } }

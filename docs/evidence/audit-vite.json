@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "tool": "native-feel-pwa",
+  "filesScanned": 7,
+  "findings": [],
+  "skipped": [
+    {
+      "path": "dist",
+      "reason": "excluded directory"
+    }
+  ],
+  "limitations": [
+    "Regex candidate checks include comments and may miss computed/minified/framework expressions",
+    "No WCAG, security, installability or runtime certification",
+    "No service worker is valid for an online-first app; absence is not an error"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "scenario": "Temporary copy: remove seeded global zoom, touch and selection restrictions",
+  "before": {
+    "exit": 1,
+    "schemaVersion": 1,
+    "tool": "native-feel-pwa",
+    "filesScanned": 7,
+    "findings": [
+      {
+        "id": "zoom-disabled",
+        "severity": "error",
+        "path": "index.html",
+        "line": 2,
+        "message": "User zoom restriction; preserve zoom and repair the actual interaction",
+        "confidence": "candidate"
+      },
+      {
+        "id": "touch-none",
+        "severity": "warning",
+        "path": "src/styles.css",
+        "line": 15,
+        "message": "Verify this is a scoped surface with accessible alternatives, not a global gesture lock",
+        "confidence": "candidate"
+      },
+      {
+        "id": "selection-disabled",
+        "severity": "warning",
+        "path": "src/styles.css",
+        "line": 15,
+        "message": "Verify selection remains available for reading/editing content",
+        "confidence": "candidate"
+      }
+    ],
+    "skipped": [],
+    "limitations": [
+      "Regex candidate checks include comments and may miss computed/minified/framework expressions",
+      "No WCAG, security, installability or runtime certification",
+      "No service worker is valid for an online-first app; absence is not an error"
+    ]
+  },
+  "after": {
+    "exit": 0,
+    "schemaVersion": 1,
+    "tool": "native-feel-pwa",
+    "filesScanned": 7,
+    "findings": [],
+    "skipped": [],
+    "limitations": [
+      "Regex candidate checks include comments and may miss computed/minified/framework expressions",
+      "No WCAG, security, installability or runtime certification",
+      "No service worker is valid for an online-first app; absence is not an error"
+    ]
+  },
+  "limitation": "Static rule improvement only; no physical zoom or runtime performance claim"
+}

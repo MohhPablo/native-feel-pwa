@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "chunks/0cz1d0mv5g_q7.js",
+      "gzipBytes": 39520
+    },
+    {
+      "path": "chunks/0umf92h1sb77c.js",
+      "gzipBytes": 3516
+    },
+    {
+      "path": "chunks/24_ensxe60vhx.js",
+      "gzipBytes": 574
+    },
+    {
+      "path": "chunks/3c4xol65z2da2.js",
+      "gzipBytes": 49481
+    },
+    {
+      "path": "chunks/3cfn99dbrcvvp.js",
+      "gzipBytes": 5944
+    },
+    {
+      "path": "chunks/3dmm3v_fq28gc.js",
+      "gzipBytes": 71809
+    },
+    {
+      "path": "chunks/turbopack-3-ry682tkyiqk.js",
+      "gzipBytes": 3942
+    },
+    {
+      "path": "lu6uVQUECO_7MJzbiFVvI/_buildManifest.js",
+      "gzipBytes": 154
+    },
+    {
+      "path": "lu6uVQUECO_7MJzbiFVvI/_clientMiddlewareManifest.js",
+      "gzipBytes": 66
+    },
+    {
+      "path": "lu6uVQUECO_7MJzbiFVvI/_ssgManifest.js",
+      "gzipBytes": 64
+    }
+  ],
+  "totalGzipBytes": 175070,
+  "budgetBytes": 200000,
+  "passed": true,
+  "incomplete": false,
+  "skipped": [],
+  "limitations": [
+    "Sum of all JS files, not an initial-route transfer or parse-time measurement",
+    "Per-file gzip level 9; server encoding may differ"
+  ]
+}

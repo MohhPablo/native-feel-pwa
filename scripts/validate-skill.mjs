@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {parse} from 'yaml';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const text=fs.readFileSync(path.join(root,'SKILL.md'),'utf8');
+const fm=text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);if(!fm)throw Error('Missing frontmatter');
+const data=parse(fm[1],{uniqueKeys:true});
+if(typeof data.name!=='string'|| !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.name)||data.name.length>64||data.name!==path.basename(root))throw Error('Invalid name/directory');
+if(typeof data.description!=='string'||!data.description.trim()||data.description.length>1024)throw Error('Invalid description');
+if(text.split('\n').length>500)throw Error('SKILL.md exceeds project context budget');
+for(const m of text.matchAll(/\]\(([^)]+)\)/g))if(!/^[a-z]+:/.test(m[1])&&!fs.existsSync(path.join(root,m[1])))throw Error(`Missing reference ${m[1]}`);
+console.log('PASS: project frontmatter, name, length and linked references (not a replacement for skills-ref)');

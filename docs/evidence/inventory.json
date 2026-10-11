@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "path": "package.json",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "devDependencies": [
+        "vite"
+      ]
+    }
+  ],
+  "candidates": [
+    "src/Reader.jsx"
+  ],
+  "skipped": [
+    {
+      "path": "dist",
+      "reason": "excluded directory"
+    }
+  ],
+  "limitations": [
+    "Names only; inspect implementations, imports, lockfiles and licensing before decisions",
+    "Dependency URLs/values and source snippets are deliberately not printed"
+  ]
+}

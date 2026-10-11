@@ -1,0 +1,4 @@
+interface:
+  display_name: "Native Feel PWA"
+  short_description: "Reuse-first PWA audits, fixes and measured improvements"
+  default_prompt: "Use $native-feel-pwa to audit this repository and prioritize verified PWA issues."

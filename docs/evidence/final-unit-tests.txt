@@ -1,0 +1,38 @@
+✔ valid manifest verifies real local PNG headers (8.739215ms)
+✔ bad JSON is an actionable finding (1.579897ms)
+✔ non-object manifest is rejected (2.172623ms)
+✔ PNG dimension mismatch is detected (2.546267ms)
+✔ missing icon fails validation (2.794061ms)
+✔ external icon is not fetched and is reported (1.997078ms)
+✔ invalid start URL type and scope mismatch are errors (2.453808ms)
+✔ relative icon resolves relative to manifest, not working directory (3.14367ms)
+✔ encoded traversal cannot read outside public root (2.073644ms)
+✔ viewport and worker hazards include line locations without snippets (13.564026ms)
+✔ selectable zoomable online-first example has no static findings (3.17664ms)
+✔ no manifest is coverage warning, not invented missing-feature error (2.159333ms)
+✔ secret and generated files are excluded (0.75446ms)
+✔ scanner reports size and count limits (0.623602ms)
+✔ symlinks are not followed (0.744985ms)
+✔ icon symlink is rejected even within root (1.463151ms)
+✔ inventory identifies components and does not print private dependency URLs (0.970026ms)
+✔ malformed package manifest does not silently pass (0.648941ms)
+✔ bundle ceiling passes/fails and includes .next when it is build root (2.524534ms)
+✔ empty bundle and invalid budget throw instead of pass (0.398412ms)
+✔ CLI path with spaces, findings and usage exit codes (561.918019ms)
+✔ warning fails strict only (175.357584ms)
+✔ flags reject missing values (0.268316ms)
+✔ framework viewport restriction is flagged (0.982003ms)
+✔ oversized manifest fails bounded inspection (10.437997ms)
+✔ PascalCase JSX is inventoried outside a components directory (0.864706ms)
+✔ budget cannot pass when hidden or sensitive output is omitted (0.923796ms)
+✔ unrelated package suffix does not abort inventory (0.890165ms)
+✔ invalid manifest and icon field types are errors (1.499246ms)
+✔ purpose allows surrounding whitespace (1.37667ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 990.581114

@@ -1,0 +1,58 @@
+[
+  {
+    "port": 4173,
+    "path": "/",
+    "status": 200,
+    "contentType": "text/html",
+    "bytes": 531
+  },
+  {
+    "port": 4173,
+    "path": "/manifest.webmanifest",
+    "status": 200,
+    "contentType": "application/manifest+json",
+    "bytes": 593
+  },
+  {
+    "port": 4173,
+    "path": "/icons/icon-192.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 630
+  },
+  {
+    "port": 4173,
+    "path": "/icons/icon-512.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 3701
+  },
+  {
+    "port": 4174,
+    "path": "/",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 6305
+  },
+  {
+    "port": 4174,
+    "path": "/manifest.webmanifest",
+    "status": 200,
+    "contentType": "application/manifest+json",
+    "bytes": 593
+  },
+  {
+    "port": 4174,
+    "path": "/icons/icon-192.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 630
+  },
+  {
+    "port": 4174,
+    "path": "/icons/icon-512.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 3701
+  }
+]
